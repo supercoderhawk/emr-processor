@@ -1,0 +1,15 @@
+{
+  "name": "emr-processor",
+  "version": "0.0.0",
+  "description": "process emr data",
+  "main": "./dist/main.js",
+  "dependencies": {
+    "vue": "^2.1.10",
+    "vue-electron": "^1.0.6",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.2",
+    "vuex": "^2.1.1"
+  },
+  "devDependencies": {},
+  "author": "supercoderhawk <xyb930826@gmail.com>"
+}
