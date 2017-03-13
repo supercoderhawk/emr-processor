@@ -15,8 +15,9 @@
 </template>
 
 <script>
-  import store from 'renderer/vuex/store'
+  import store from './store/index'
   import {navbar} from 'vue-strap'
+
   export default {
     store,
     components: {

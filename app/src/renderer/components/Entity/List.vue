@@ -26,24 +26,13 @@
     },
     data: function () {
       return {
-        items: [
-          {
-            id: 1,
-            value: '我',
-            type: '11',
-            start: 0,
-            end: 1
-          }, {
-            id: 2,
-            value: '你',
-            type: '22',
-            start: 3,
-            end: 4
-          }
-        ]
+      }
+    },
+    computed: {
+      items () {
+        return this.$store.state.list.items
       }
     }
-
   }
 </script>
 
