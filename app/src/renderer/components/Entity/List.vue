@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <item  v-for="item in items" :id="item.id" :value="item.value"
+      <item  v-for="item in items" :key="item.id" :id="item.id" :value="item.value"
              :type="item.type" :start="item.start" :end="item.end"></item>
     </tbody>
   </table>

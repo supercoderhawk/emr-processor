@@ -38,7 +38,6 @@
         })
       },
       selectStart (event) {
-        event.preventDefault()
         console.log(this.$store)
         return false
       }
