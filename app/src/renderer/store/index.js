@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import index from './modules/index'
-import list from './modules/entity'
+import entity from './modules/entity'
 
 Vue.use(Vuex)
 
@@ -13,7 +13,7 @@ export default new Vuex.Store({
   getters,
   modules: {
     index,
-    list
+    entity
   },
   strict: process.env.NODE_ENV !== 'production'
 })

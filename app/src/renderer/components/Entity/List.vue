@@ -30,7 +30,7 @@
     },
     computed: {
       items () {
-        return this.$store.state.list.items
+        return this.$store.state.entity.items
       }
     }
   }
