@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import index from './modules/index'
-import list from './modules/list'
+import list from './modules/entity'
 
 Vue.use(Vuex)
 
