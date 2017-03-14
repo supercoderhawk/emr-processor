@@ -6,7 +6,7 @@
 
       <li><a href="#">实体标注</a></li>
       <li><a href="#">关系标注</a></li>
-      <li><a href="#">数据转换</a></li>
+      <li><a href="#/converter">数据转换</a></li>
 
     </navbar>
 

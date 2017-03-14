@@ -27,3 +27,15 @@ export const LIST = {
     }
   ]
 }
+
+export const CONVERTER = {
+  BASE_URL: 'https://saas.synyi.com/api/v1/db/129/note/',
+  INPUT_TYPES: [
+    {val: 0, label: '一'},
+    {val: 1, label: '二'}
+  ],
+  OUTPUT_TYPES: [
+    {val: 0, label: '分词'},
+    {val: 1, label: 'JSON'}
+  ]
+}

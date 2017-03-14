@@ -1,11 +1,16 @@
 export default [
   {
-    path: '/',
+    path: '/entity',
     name: 'entity',
     component: require('components/Entity')
   },
   {
-    path: '*',
-    redirect: '/'
+    path: '/converter',
+    name: 'converter',
+    component: require('components/Converter')
+  },
+  {
+    path: '/',
+    redirect: '/entity'
   }
 ]

@@ -6,3 +6,16 @@ export const addItem = ({ commit, state }, item) => {
     commit(types.ADD_ITEM, item)
   }
 }
+
+export const addRecord = ({ commit, state }, hash, name, plainText, jsonText) => {
+  let record = {
+    id: state.converter.amount,
+    hash,
+    name,
+    plainText,
+    jsonText
+  }
+
+  commit(types.ADD_RECORD, record)
+  commit(types.ADD_AMOUNT)
+}
