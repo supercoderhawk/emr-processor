@@ -24,7 +24,6 @@
 <script>
   import {input} from 'vue-strap'
   import list from './Entity/List'
-  // import store from '../store/index'
 
   export default{
     components: {
@@ -56,14 +55,13 @@
         return false
       }
     },
-    // store,
     name: 'entity'
   }
 </script>
 
 <style>
-  textarea{
-    font-size: 24px !important;
-    width: 400px !important;
+  .entity textarea{
+    font-size: 24px;
+    width: 400px;
   }
 </style>
