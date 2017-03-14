@@ -30,6 +30,8 @@ export const LIST = {
 
 export const CONVERTER = {
   BASE_URL: 'https://saas.synyi.com/api/v1/db/129/note/',
+  TEST_URL: 'https://saas.synyi.com/api/v1/db/129/note/14fe5761c6c540093e44bc4b',
+  HOST: 'saas.synyi.com',
   INPUT_TYPES: [
     {val: 0, label: '一'},
     {val: 1, label: '二'}
@@ -37,5 +39,7 @@ export const CONVERTER = {
   OUTPUT_TYPES: [
     {val: 0, label: '分词'},
     {val: 1, label: 'JSON'}
-  ]
+  ],
+  KEY: 'crc6WykJIQRfD5jeE3QOOvZFDDVcCtkx',
+  SIGN: 'lGKO06JXdSwQ2Oou6easL7BWcJxn5sSe'
 }
