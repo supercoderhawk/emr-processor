@@ -20,7 +20,8 @@ let rendererConfig = {
     'bootstrap/dist/css/bootstrap.min.css'
   ], */{
     renderer: path.join(__dirname, 'app/src/renderer/main.js'),
-    bootstrap: 'bootstrap/dist/css/bootstrap.min.css'
+    bootstrap: ['bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.js'],
+    jquery: 'jquery/dist/jquery.js'
   },
   externals: Object.keys(pkg.dependencies || {}),
   module: {
@@ -87,14 +88,28 @@ let rendererConfig = {
   plugins: [
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
+      inject: false,
       filename: 'index.html',
       template: './app/index.ejs',
+      headScripts: [
+        'jquery.js',
+        'bootstrap.js'
+      ],
+      scripts: [
+        'renderer.js'
+      ],
+      links: [
+        'style.css'
+      ],
       appModules: process.env.NODE_ENV !== 'production'
         ? path.resolve(__dirname, 'app/node_modules')
         : false,
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
   output: {
     filename: '[name].js',

@@ -9,9 +9,19 @@
         require('module').globalPaths.push('<%= htmlWebpackPlugin.options.appModules.replace(/\\/g, '\\\\') %>')
       </script>
     <% } %>
+
+    <% for (item in htmlWebpackPlugin.options.headScripts ) { %>
+    <script src="<%=htmlWebpackPlugin.options.headScripts[item] %>"></script>
+    <% } %>
+    <% for (key in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+    <% } %>
   </head>
   <body>
     <div id="app"></div>
     <!-- webpack builds are automatically injected -->
   </body>
+  <% for (item in htmlWebpackPlugin.options.scripts ) { %>
+  <script src="<%=htmlWebpackPlugin.options.scripts[item] %>"></script>
+  <% } %>
 </html>

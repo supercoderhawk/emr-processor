@@ -1,5 +1,19 @@
 <template>
   <div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        下拉菜单按钮
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li class="dropdown-header">菜单头</li>
+        <li><a href="#">菜单1</a></li>
+        <li><a href="#">菜单2</a></li>
+        <li><a href="#">菜单3</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">菜单4</a></li>
+      </ul>
+    </div>
     <div class="text-wrapper">
       <bs-input ref="textarea" type="textarea" @dblclick.native="selectStart($event)" @select.native="select($event)" v-model="text" readonly></bs-input>
     </div>
