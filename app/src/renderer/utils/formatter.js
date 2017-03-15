@@ -5,8 +5,11 @@ class JSONFormatter {
 
 JSONFormatter.install = function (Vue, options) {
   Vue.directive('json-content', function (el, binding) {
-    // console.log("display-json", el, binding);
+    // console.log('display-json', el, binding)
     let renderer = new JsonFormatter(binding.value)
+    while (el.hasChildNodes()) {
+      el.removeChild(el.firstChild)
+    }
     el.appendChild(renderer.render())
     if (!document.getElementById('json-formatter-style')) {
       let styleTag = document.createElement('style')
