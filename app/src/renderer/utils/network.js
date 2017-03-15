@@ -67,7 +67,7 @@ export function post (url, data = null, headers = null, json = true) {
  * @param qs 请求的查询对象，默认为包含时间戳
  * @returns {Promse}
  */
-export function syGet (path, qs = {}) {
+export function syGet (path, qs = {}, json = true) {
   let time = Math.floor(Date.now() / 1000)
   qs.ts = time
   let qsArray = []
@@ -79,5 +79,5 @@ export function syGet (path, qs = {}) {
   }
   let fullPath = path + '?' + qsArray.join('&')
   let url = CONVERTER.BASE_URL + fullPath
-  return get(url, null, {'x-sign': sign(fullPath), 'x-key': CONVERTER.KEY})
+  return get(url, null, {'x-sign': sign(fullPath), 'x-key': CONVERTER.KEY}, json)
 }
