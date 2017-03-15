@@ -23,3 +23,8 @@ export const addRecord = ({ commit, state }, recItem) => {
 export const removeAllRecords = ({commit}) => {
   commit(types.REMOVE_ALL_RECORDS)
 }
+
+export const modifyText = ({commit}, {plainText, jsonText}) => {
+  commit(types.MODIFY_PLAIN_IN_DISPLAY, plainText)
+  commit(types.MODIFY_JSON_IN_DISPLAY, jsonText)
+}

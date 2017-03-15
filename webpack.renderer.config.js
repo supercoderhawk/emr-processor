@@ -13,15 +13,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 let rendererConfig = {
   devtool: '#eval-source-map',
   devServer: { overlay: true },
-  entry:/*[
-    'webpack-dev-server/client?http://0.0.0.0:9080',//资源服务器地址
-    'webpack/hot/only-dev-server',
-    path.join(__dirname, 'app/src/renderer/main.js'),
-    'bootstrap/dist/css/bootstrap.min.css'
-  ], */{
+  entry: {
     renderer: path.join(__dirname, 'app/src/renderer/main.js'),
-    bootstrap: ['bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.js'],
-    jquery: 'jquery/dist/jquery.js'
+    bootstrap: ['bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.js']
+    // jquery: 'jquery/dist/jquery.js'
   },
   externals: Object.keys(pkg.dependencies || {}),
   module: {
@@ -92,7 +87,6 @@ let rendererConfig = {
       filename: 'index.html',
       template: './app/index.ejs',
       headScripts: [
-        'jquery.js',
         'bootstrap.js'
       ],
       scripts: [
@@ -114,7 +108,6 @@ let rendererConfig = {
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    // publicPath: 'http://127.0.0.1:9080/app/dist/',
     path: path.join(__dirname, 'app/dist')
   },
   resolve: {

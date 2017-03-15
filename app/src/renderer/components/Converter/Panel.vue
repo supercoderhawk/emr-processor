@@ -4,15 +4,15 @@
       <div class="col-sm-12 col-xs-12 col-lg-12">
         <v-select v-model="input.value" :options="input.options" options-value="val"
                   name="records" @change="recordChange" @selected="recordSelected" justified required close-on-select></v-select>
-        <button @click="getData" class="btn btn-default">获取数据</button>
-        <button @click="test" class="btn btn-default">测试</button>
+        <a @click="getData" class="btn btn-default">获取数据</a>
+        <a @click="test" class="btn btn-default">测试</a>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-xs-12 col-lg-12">
         <v-select v-model="output.value" :options="output.options" options-value="val"
                   name="types" justified close-on-select></v-select>
-        <button @click="" class="btn btn-default">导出数据</button>
+        <a @click="" class="btn btn-default">导出数据</a>
       </div>
     </div>
 
@@ -49,12 +49,18 @@
       recordChange (value) {
         console.log('change:' + value)
         // 根据选中的病历ID设置内容
+        let plain = this.$store.state.converter.records[value].plainText
+        let json = this.$store.state.converter.records[value].jsonText
+        this.$store.dispatch('modifyText', {plainText: plain, jsonText: json})
       },
       recordSelected (label) {
-        // console.log('selected' + label)
+        console.log('selected' + label)
       },
       // 获取森亿智库病历列表
       getData () {
+        // 清除原有数据
+        this.$store.dispatch('removeAllRecords')
+        // 获取数据
         let $this = this
         syGet(CONVERTER.BASE_PATH, {start: 0, count: 27})
             .then(function (res) {
@@ -73,6 +79,7 @@
                   .then(function (resConcept) {
                     $this.$store.dispatch('addRecord',
                         {id: resItem.id, name: resItem.name, plainText: resItem.content, jsonText: resConcept})
+                    $this.recordChange(0)
                   })
                   .catch(function (err) {
                     console.log(err)
