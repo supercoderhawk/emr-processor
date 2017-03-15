@@ -31,7 +31,6 @@ export const LIST = {
 export const CONVERTER = {
   BASE_PATH: '/api/v1/db/129/note/',
   BASE_URL: 'https://saas.synyi.com',
-  TEST_URL: 'https://saas.synyi.com/api/v1/db/129/note/14fe5761c6c540093e44bc4b',
   HOST: 'saas.synyi.com',
   INPUT_TYPES: [
     {val: 0, label: '一'},
