@@ -23,9 +23,10 @@
   // import rp from 'request-promise-native'
   // import request from 'request'
   import {CONVERTER} from '../../utils/constant'
-  import crypto from 'crypto'
+  // import crypto from 'crypto'
   // var request = require('request/request')
-  const https = require('https')
+  // const https = require('https')
+  import {syGet} from '../../utils/network'
 
   export default {
     components: {
@@ -45,35 +46,9 @@
     },
     methods: {
       getData () {
-        let time = Math.floor(Date.now() / 1000)
-        let url = CONVERTER.TEST_URL + '?ts=' + time
-        let path = '/api/v1/db/129/note/14fe5761c6c540093e44bc4b?ts=' + time
-        let sign = crypto.createHash('sha256').update(encodeURI(path) + CONVERTER.SIGN, 'utf8').digest('hex')
-        console.log(encodeURI(url))
-        let options = {
-          host: CONVERTER.HOST,
-          path: path,
-          port: '443',
-          headers: {
-            'x-sign': sign,
-            'x-key': CONVERTER.KEY
-          }
-        }
-        https.get(options, function (res, body) {
-          // console.log(res)
-          // console.log(err)
-          res.on('data', (d) => {
-            // process.stdout.write(d);
-            console.log(d.toString())
-            console.log(res.statusCode)
-          })
+        syGet('/api/v1/db/129/note/14fe5761c6c540093e44bc4b').then(function (res) {
+          console.log(res)
         })
-        /*
-        rp({uri: CONVERTER.TEST_URL + '?ts=' + time, json: true})
-            .then(function (res) {
-              console.log(JSON.toString(res))
-            })
-            */
       }
     }
   }
