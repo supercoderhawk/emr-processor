@@ -1,4 +1,4 @@
-import * as type from '../mutation-types'
+import * as types from '../mutation-types'
 
 const state = {
   records: [
@@ -10,16 +10,21 @@ const state = {
       'name': '病历'
     }
   ],
-  amount: 0
+  amount: 1
 }
 
 const mutations = {
-  [type.ADD_RECORD] (state, record) {
+  [types.ADD_RECORD] (state, record) {
     state.records.push(record)
   },
 
-  [type.ADD_AMOUNT] (state) {
+  [types.ADD_AMOUNT] (state) {
     state.amount ++
+  },
+
+  [types.REMOVE_ALL_RECORDS] (state) {
+    let records = state.records
+    records.splice(0, records.length)
   }
 }
 

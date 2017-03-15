@@ -7,15 +7,19 @@ export const addItem = ({ commit, state }, item) => {
   }
 }
 
-export const addRecord = ({ commit, state }, hash, name, plainText, jsonText) => {
+export const addRecord = ({ commit, state }, recItem) => {
   let record = {
     id: state.converter.amount,
-    hash,
-    name,
-    plainText,
-    jsonText
+    hash: recItem.hash,
+    name: recItem.name,
+    plainText: recItem.plainText,
+    jsonText: recItem.jsonText
   }
 
   commit(types.ADD_RECORD, record)
   commit(types.ADD_AMOUNT)
+}
+
+export const removeAllRecords = ({commit}) => {
+  commit(types.REMOVE_ALL_RECORDS)
 }
