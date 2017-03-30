@@ -40,6 +40,6 @@ export const CONVERTER = {
     {val: 0, label: '分词'},
     {val: 1, label: 'JSON'}
   ],
-  KEY: 'crc6WykJIQRfD5jeE3QOOvZFDDVcCtkx',
-  SIGN: 'lGKO06JXdSwQ2Oou6easL7BWcJxn5sSe'
+  KEY: '316WbbEsHIKpEXJN2eT8iQGoEVmQw2jL',  // uk
+  SIGN: 'CtbwqqzoTHFzbBN7A1mjL1Wd77WHjgHI' // ut
 }
