@@ -5,7 +5,7 @@
         <v-select v-model="input.value" :options="input.options" options-value="val"
                   name="records" @change="recordChange" @selected="recordSelected" justified required close-on-select></v-select>
         <a @click="getData" class="btn btn-default">获取数据</a>
-        <a @click="test" class="btn btn-default">测试</a>
+        <a class="btn btn-default">测试</a>
       </div>
     </div>
     <div class="row">
@@ -49,9 +49,9 @@
       recordChange (value) {
         console.log('change:' + value)
         // 根据选中的病历ID设置内容
-        let plain = this.$store.state.converter.records[value].plainText
-        let json = this.$store.state.converter.records[value].jsonText
-        this.$store.dispatch('modifyText', {plainText: plain, jsonText: json})
+        // let plain = this.$store.state.converter.records[value].plainText
+        // let json = this.$store.state.converter.records[value].jsonText
+        // this.$store.dispatch('modifyText', {plainText: plain, jsonText: json})
       },
       recordSelected (label) {
         console.log('selected' + label)
@@ -79,7 +79,9 @@
                   .then(function (resConcept) {
                     $this.$store.dispatch('addRecord',
                         {id: resItem.id, name: resItem.name, plainText: resItem.content, jsonText: resConcept})
-                    $this.recordChange(0)
+                            .then(function () {
+                              $this.recordChange(0)
+                            })
                   })
                   .catch(function (err) {
                     console.log(err)
@@ -88,9 +90,6 @@
             .catch(function (error) {
               console.log(error)
             })
-      },
-      test () {
-        this.$store.dispatch('addRecord', {id: '234', name: '测试', plainText: '内容', jsonText: null})
       }
     }
   }
