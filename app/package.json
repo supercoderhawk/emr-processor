@@ -9,9 +9,11 @@
     "request-promise-native": "^1.0.3",
     "vue": "^2.2.3",
     "vue-electron": "^1.0.6",
+    "vue-quill-editor": "^2.2.1",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.2",
     "vue-strap": "github:wffranco/vue-strap",
+    "vue2-editor": "^2.0.24",
     "vuex": "^2.1.1"
   },
   "devDependencies": {},
