@@ -8,22 +8,6 @@
   import 'quill/dist/quill.core.css'
   import 'quill/dist/quill.snow.css'
 
-  let defaultToolbar = [
-    ['bold', 'italic', 'underline', 'strike'],
-    ['blockquote', 'code-block', 'image'],
-
-    [{'list': 'ordered'}, {'list': 'bullet'}],
-
-    [{'indent': '-1'}, {'indent': '+1'}],
-    [{'header': [1, 2, 3, 4, 5, 6, false]}],
-
-    [{'color': []}, {'background': []}],
-    [{'font': []}],
-    [{'align': []}],
-
-    ['clean']
-  ]
-
   export default {
     name: 'vue-editor',
     props: {
@@ -33,15 +17,13 @@
         'default': 'quill-container'
       },
       placeholder: String,
-      disabled: Boolean,
-      editorToolbar: Array
+      disabled: Boolean
     },
 
     data () {
       return {
         quill: null,
-        editor: null,
-        toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+        editor: null
       }
     },
 
@@ -71,7 +53,7 @@
       setQuillElement () {
         this.quill = new Quill(this.$refs.quillContainer, {
           modules: {
-            toolbar: false // this.toolbar
+            toolbar: false
           },
           placeholder: this.placeholder ? this.placeholder : '',
           theme: 'snow',
