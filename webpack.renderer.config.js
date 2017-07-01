@@ -23,10 +23,12 @@ let rendererConfig = {
     rules: [
       {
         test: /\.css$/,
+        loader: 'style-loader!css-loader'
+        /*
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader'
-        })
+        })*/
       },
       {
         test: /\.html$/,
