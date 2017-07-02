@@ -12,23 +12,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let rendererConfig = {
   devtool: '#eval-source-map',
-  devServer: { overlay: true },
+  devServer: {overlay: true},
   entry: {
-    renderer: path.join(__dirname, 'app/src/renderer/main.js'),
-    bootstrap: ['bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.js']
-    // jquery: 'jquery/dist/jquery.js'
+    renderer: [path.join(__dirname, 'app/src/renderer/main.js'), 'bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.js'],
   },
   externals: Object.keys(pkg.dependencies || {}),
   module: {
     rules: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
-        /*
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })*/
+        use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
       },
       {
         test: /\.html$/,
@@ -40,6 +33,10 @@ let rendererConfig = {
           loader: 'vue-loader',
           options: {
             loaders: {
+              css: ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback: 'vue-style-loader'
+              }),
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
               scss: 'vue-style-loader!css-loader!sass-loader'
             }
@@ -49,7 +46,7 @@ let rendererConfig = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [ path.resolve(__dirname, 'app/src/renderer') ],
+        include: [path.resolve(__dirname, 'app/src/renderer')],
         exclude: /node_modules/
       },
       {
@@ -83,17 +80,11 @@ let rendererConfig = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
-      inject: false,
+      inject: 'body',
       filename: 'index.html',
       template: './app/index.ejs',
-      headScripts: [
-        'bootstrap.js'
-      ],
-      scripts: [
-        'renderer.js'
-      ],
       links: [
         'style.css'
       ],
@@ -108,13 +99,13 @@ let rendererConfig = {
     })
   ],
   output: {
-    filename: '[name].js',
+    filename: '[name].min.js',
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, 'app/dist')
   },
   resolve: {
     alias: {
-      'components': path.join(__dirname, 'app/src/renderer/components'),
+      'vue$': path.join(__dirname, 'node_modules/vue/dist/vue.esm.js'),
       'renderer': path.join(__dirname, 'app/src/renderer')
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node'],
