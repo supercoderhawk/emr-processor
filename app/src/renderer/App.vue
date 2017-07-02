@@ -1,27 +1,29 @@
 <template>
   <div id="#app">
-    <navbar placement="top" type="default">
-      <!-- Brand as slot -->
-      <a slot="brand" href="/" title="Home" class="navbar-brand">Usst IMIE</a>
-
-      <li><a href="#">实体标注</a></li>
-      <li><a href="#">关系标注</a></li>
-      <li><a href="#/converter">数据转换</a></li>
-
-    </navbar>
-
-    <router-view></router-view>
+    <tabs>
+      <tab header="实体标注">
+        <entity></entity>
+      </tab>
+      <tab header="关系标注">
+        <relation></relation>
+      </tab>
+    </tabs>
   </div>
 </template>
 
 <script>
   import store from './store/index'
-  import {navbar} from 'vue-strap'
+  import {tabs, tab} from 'vue-strap'
+  import entity from './components/Entity'
+  import relation from './components/Relation'
 
   export default {
     store,
     components: {
-      navbar
+      entity,
+      relation,
+      tabs,
+      tab
     }
   }
 </script>
@@ -34,7 +36,9 @@
   }
 
   html,
-  body { height: 100%; }
+  body {
+    height: 100%;
+  }
 
   body {
 
