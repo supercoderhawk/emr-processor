@@ -4,15 +4,11 @@
     <meta charset="utf-8">
     <title>电子病历处理工具</title>
     <% if (htmlWebpackPlugin.options.appModules) { %>
-      <!-- Add `app/node_modules` to global paths so `require` works properly in development -->
       <script>
         require('module').globalPaths.push('<%= htmlWebpackPlugin.options.appModules.replace(/\\/g, '\\\\') %>')
       </script>
     <% } %>
 
-    <% for (item in htmlWebpackPlugin.options.headScripts ) { %>
-    <script src="<%=htmlWebpackPlugin.options.headScripts[item] %>"></script>
-    <% } %>
     <% for (key in htmlWebpackPlugin.files.css) { %>
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
     <% } %>
@@ -21,7 +17,4 @@
     <div id="app"></div>
     <!-- webpack builds are automatically injected -->
   </body>
-  <% for (item in htmlWebpackPlugin.options.scripts ) { %>
-  <script src="<%=htmlWebpackPlugin.options.scripts[item] %>"></script>
-  <% } %>
 </html>
