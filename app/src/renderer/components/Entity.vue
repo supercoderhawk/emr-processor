@@ -1,22 +1,6 @@
 <template>
   <div class="entity">
-    <!--<div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="true">
-          下拉菜单按钮
-          <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li class="dropdown-header">菜单头</li>
-        <li><a href="#">菜单1</a></li>
-        <li><a href="#">菜单2</a></li>
-        <li><a href="#">菜单3</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">菜单4</a></li>
-      </ul>
-    </div>-->
     <vue-editor v-model="content" ref="editor" @select="selectContent"></vue-editor>
-
     <list></list>
   </div>
 </template>
@@ -33,26 +17,29 @@
     },
     data () {
       return {
-        content: 'Textaaaaa'
+        content: 'Textaaaaa啊啊啊啊啊啊'
       }
     },
     computed: {
-      editor () {
+      editor  () {
         return this.$refs.editor.quill
       }
     },
     methods: {
       selectContent (start, end, text) {
-        if (isRangeValid(start, end, this.$store.state.entity.items)) {
+        let items = this.$store.state.entity.items
+        if (isRangeValid(start, end, items)) {
+          let insertIndex = items.length > 0 ? items.filter(curItem => { return curItem.end < start }).length : 0
           this.$store.dispatch('entity/addItem', {
-            id: start,
+            id: insertIndex,
             value: text,
             type: 1,
             start,
             end
           })
-          console.log(text)
+          // console.log(text)
           this.editor.format('color', 'red')
+          this.editor.blur()
         }
       }
     },
@@ -63,7 +50,6 @@
 <style>
   .entity textarea {
     font-size: 24px;
-    width: 400px;
+    width: 300px;
   }
-
 </style>
