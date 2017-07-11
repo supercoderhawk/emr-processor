@@ -1,7 +1,7 @@
 <template>
-    <div class="quillWrapper">
-        <div ref="quillContainer" :id="id"></div>
-    </div>
+  <div class="quillWrapper">
+    <div ref="quillContainer" :id="id"></div>
+  </div>
 </template>
 <script>
   import Quill from 'quill'
@@ -23,7 +23,10 @@
     data () {
       return {
         quill: null,
-        editor: null
+        editor: null,
+        selection: '',
+        left: 0,
+        top: 0
       }
     },
 
@@ -51,6 +54,7 @@
       },
 
       setQuillElement () {
+        let self = this
         this.quill = new Quill(this.$refs.quillContainer, {
           modules: {
             toolbar: false
@@ -59,9 +63,23 @@
           theme: 'snow',
           readOnly: this.disabled ? this.disabled : false
         })
+        this.quill.format('size', '20px')
         this.quill.on('text-change', (delta, oldDelta, source) => {
-          let text = this.quill.getText()
-          console.log(text)
+          // let text = this.quill.getText()
+          // console.log(text)
+        })
+        this.quill.on('selection-change', function (range, oldRange, source) {
+          if (range) {
+            if (range.length === 0) {
+              self.selection = ''
+            } else {
+              let text = self.quill.getText(range.index, range.length)
+              self.selection = text
+              self.$emit('select', range.index, range.index + range.length - 1, text)
+              // self.quill.format('color', 'red')
+            }
+          } else {
+          }
         })
       },
 
@@ -71,6 +89,7 @@
 
       checkForInitialContent () {
         this.editor.innerHTML = this.value || ''
+        // this.left = this.editor.clientLeft
       },
 
       handleUpdatedEditor () {
@@ -83,7 +102,8 @@
 </script>
 
 <style>
-    #quill-container {
-        min-height: 400px;
-    }
+  #quill-container {
+    min-height: 400px;
+    font-size: 28px;
+  }
 </style>
