@@ -2,6 +2,7 @@
   "name": "emr-processor",
   "version": "0.0.1",
   "description": "process emr data",
+  "repository": "https://github.com/supercoderhawk/emr-processor",
   "scripts": {
     "build": "npm run pack && build",
     "build:dir": "npm run pack && build --dir",
@@ -14,8 +15,8 @@
     "postinstall": "npm run lint:fix && cd app && npm install"
   },
   "build": {
-    "productName": "ElectronVue",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "EMR-Processor",
+    "appId": "cn.edu.usst.imie.emr-processor",
     "dmg": {
       "contents": [
         {
@@ -49,7 +50,7 @@
       ]
     }
   },
-  "author": "SuperCoderHawk <supercoderhawk@gmail.com>",
+  "author": "supercoderhawk <supercoderhawk@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
