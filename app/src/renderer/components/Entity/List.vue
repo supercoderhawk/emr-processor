@@ -7,6 +7,7 @@
         <th>实体类型</th>
         <th>开始位置</th>
         <th>结束位置</th>
+        <th>删除</th>
       </tr>
     </thead>
     <tbody>
@@ -37,7 +38,7 @@
 </script>
 
 <style>
-  th, td{
+  .table th, .table td{
     vertical-align: middle !important;
     text-align: center;
   }
