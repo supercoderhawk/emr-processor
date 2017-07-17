@@ -24,6 +24,14 @@ let rendererConfig = {
         use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
       },
       {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
+      },
+      {
+        test: /\.sass$/,
+        use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
+      },
+      {
         test: /\.html$/,
         use: 'vue-html-loader'
       },
@@ -32,13 +40,20 @@ let rendererConfig = {
         use: {
           loader: 'vue-loader',
           options: {
+
             loaders: {
               css: ExtractTextPlugin.extract({
                 use: 'css-loader',
                 fallback: 'vue-style-loader'
               }),
-              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
-              scss: 'vue-style-loader!css-loader!sass-loader'
+              sass: ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback: 'vue-style-loader'
+              }),
+              scss: ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback: 'vue-style-loader'
+              })
             }
           }
         }
@@ -80,14 +95,11 @@ let rendererConfig = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin({filename:'style.css', allChunks: true}),
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
       template: './app/index.ejs',
-      links: [
-        'style.css'
-      ],
       appModules: process.env.NODE_ENV !== 'production'
         ? path.resolve(__dirname, 'app/node_modules')
         : false,
