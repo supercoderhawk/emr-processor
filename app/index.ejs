@@ -2,16 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>电子病历处理工具</title>
+    <title>电子病历标注工具-v0.0.1</title>
     <% if (htmlWebpackPlugin.options.appModules) { %>
       <script>
         require('module').globalPaths.push('<%= htmlWebpackPlugin.options.appModules.replace(/\\/g, '\\\\') %>')
       </script>
     <% } %>
 
-    <% for (key in htmlWebpackPlugin.files.css) { %>
-    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
-    <% } %>
+
   </head>
   <body>
     <div id="app"></div>

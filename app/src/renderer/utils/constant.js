@@ -12,19 +12,6 @@ export const ITEM = {
 
 export const LIST = {
   INIT: [
-    {
-      id: 1,
-      value: '我',
-      type: '11',
-      start: 0,
-      end: 1
-    }, {
-      id: 2,
-      value: '你',
-      type: '22',
-      start: 3,
-      end: 4
-    }
   ]
 }
 
@@ -40,6 +27,6 @@ export const CONVERTER = {
     {val: 0, label: '分词'},
     {val: 1, label: 'JSON'}
   ],
-  KEY: '316WbbEsHIKpEXJN2eT8iQGoEVmQw2jL',  // uk
+  KEY: '316WbbEsHIKpEXJN2eT8iQGoEVmQw2jL', // uk
   SIGN: 'CtbwqqzoTHFzbBN7A1mjL1Wd77WHjgHI' // ut
 }

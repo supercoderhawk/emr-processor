@@ -26,7 +26,7 @@
 
 <script>
   import {input} from 'vue-strap'
-  import panel from './Converter/Panel'
+  import panel from './Converter/Panel.vue'
   import jsonFormatter from '../utils/formatter'
 
   import Vue from 'vue'
@@ -56,7 +56,6 @@
       }
     }
   }
-
 </script>
 
 <style>

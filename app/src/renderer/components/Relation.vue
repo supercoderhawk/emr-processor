@@ -1,11 +1,13 @@
 <template>
-<p>hello</p>
+  <relation-panel></relation-panel>
 </template>
 
 <script>
-export default {
-  name: 'relation'
-}
+  import RelationPanel from './Relation/RelationPanel'
+  export default {
+    components: {RelationPanel},
+    name: 'relation'
+  }
 </script>
 
 <style>

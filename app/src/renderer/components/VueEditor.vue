@@ -1,6 +1,6 @@
 <template>
   <div class="quillWrapper">
-    <div ref="quillContainer" :id="id"></div>
+    <div ref="quillContainer" :id="id" @mouseup.native="mouseup" @mousedown.native="mousedown($event)"></div>
   </div>
 </template>
 <script>
@@ -32,7 +32,6 @@
 
     mounted () {
       this.initializeVue2Editor()
-      this.handleUpdatedEditor()
     },
 
     watch: {
@@ -76,20 +75,25 @@
           } else {
           }
         })
+        this.quill.on('onmouseup', function () {
+          console.log('aaak')
+        })
+        this.quill.on('onmousedown', function () {
+          console.log('bbbb')
+        })
       },
-
+      mouseup () {
+        console.log('aaa')
+      },
+      mousedown (event) {
+        event.preventDefault()
+      },
       setEditorElement () {
         this.editor = document.querySelector(`#${this.id} .ql-editor`)
       },
 
       checkForInitialContent () {
         this.editor.innerHTML = this.value || ''
-      },
-
-      handleUpdatedEditor () {
-        this.quill.on('text-change', () => {
-          this.$emit('input', this.editor.innerHTML)
-        })
       }
     }
   }

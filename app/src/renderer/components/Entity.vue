@@ -1,5 +1,6 @@
 <template>
   <div class="entity">
+    <toggle-button :value="true" :labels="{checked: 'Foo', unchecked: 'Bar'}" :width="85" :height="35"/>
     <vue-editor v-model="content" ref="editor" @select="selectContent"></vue-editor>
     <list></list>
     <contextmenu ref="menu" :left="left" :top="top" :display="display" v-on:selectCompleted="selectCompleted"></contextmenu>
@@ -7,10 +8,14 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import ToggleButton from 'vue-js-toggle-button'
   import list from './Entity/List'
   import contextmenu from './Entity/Contextmenu'
   import VueEditor from './VueEditor'
   import {isRangeValid, getOffset} from '../utils/utils'
+
+  Vue.use(ToggleButton)
 
   export default{
     components: {

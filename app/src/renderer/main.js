@@ -8,8 +8,6 @@ Vue.use(Electron)
 Vue.use(Resource)
 Vue.config.debug = true
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   ...App
-})
+}).$mount('#app')

@@ -24,7 +24,8 @@
       relation,
       tabs,
       tab
-    }
+    },
+    name: 'App'
   }
 </script>
 

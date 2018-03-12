@@ -1,6 +1,6 @@
 # emr-processor
 
-> process emr data
+> 中文电子病历标注工具
 
 ## Build Setup
 

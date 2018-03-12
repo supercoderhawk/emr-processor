@@ -13,3 +13,17 @@ export function isRangeValid (start, end, items) {
 
   return end < items[beforeLength].start
 }
+export function getOffset (element) {
+  let top = 0
+  let left = 0
+  do {
+    top += element.offsetTop || 0
+    left += element.offsetLeft || 0
+    element = element.offsetParent
+  } while (element)
+
+  return {
+    top: top,
+    left: left
+  }
+}
